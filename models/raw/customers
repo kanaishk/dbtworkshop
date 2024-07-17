@@ -1,4 +1,0 @@
-with customer_list as (
-    select * from jaffle_shop.customers
-)
-select * from customer_list
