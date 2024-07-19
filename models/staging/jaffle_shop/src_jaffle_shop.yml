@@ -6,12 +6,29 @@ sources:
     schema: jaffle_shop
     tables:
       - name: customers
+        description: "Contains the customer information like ID and name"
+        columns:
+          - name: id
+            description: "Contains the unique ID of each customer"
+          - name: first_name
+            description: "Contains first name of the Customer"
+          - name: last_name
+            description: "Contains the last name of the Customer"
       - name: orders
+        description: "Contains the order details like Status and date"
+        columns:
+          - name: id
+            description: "Contains the unique ID of each order"
+          - name: user_id
+            description: "Contains the ID of Customer who placed the order"
+          - name: order_date
+            description: "Contains the date on which order is placed."
+          - name: status
+            description: "Contains the status of the order"
+          - name: etlloaded_at
+            description: "Contains the load date of data in the source"
         loaded_at_field: etlloaded_at
         freshness: 
-          error_after:
-            count: 2
-            period: day
           warn_after:
             count: 1
             period: day

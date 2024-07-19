@@ -1,7 +1,9 @@
 {{
     config(
         materialized = 'incremental',
-        unique_key = 'nation_key'
+        unique_key = 'nation_key',
+        incremental_strategy = 'merge',
+        on_schema_change = 'append_new_columns'
     )
 }}
 with nations as (
@@ -14,12 +16,13 @@ with nations as (
             when n_regionkey = '3' then 'Three' 
             when n_regionkey = '4' then 'Four' 
             else 'Zero' end as region_name,
-        last_updated_date as updated_at
-    from {{ ref('dim_nation_key') }}
+        last_updated_date as updated_at,
+        'DBT' as updated_by
+    from {{ ref('raw_nation_key') }}
 )
 select * 
 from nations
 
 {% if is_incremental() %}
-    where updated_at > (select max(updated_at) from {{ this }})
+    where updated_at >= (select max(updated_at) from {{ this }})
 {% endif %}

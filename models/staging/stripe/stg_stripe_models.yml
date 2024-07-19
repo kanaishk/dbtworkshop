@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: "Contains order payment information like payment method etc"
+    config:
+      tags: ['staging']
+    columns:
+      - name: payment_id
+        description: "Contains the unique payment id for an order"
+        tests:
+          - not_null
+          - unique
+      - name: order_id
+        description: "Contains the order ID associated with the payment"
+        tests:
+          - not_null
+      - name: payment_method
+        description: "Contains the payment method used for the transaction"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['gift_card', 'coupon', 'credit_card', 'bank_transfer']
+      - name: status
+        description: "Contains the transaction status of the payment"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['success', 'fail']
+      - name: amount
+        description: "Contains the transaction amount"
+      - name: created_at
+        description: "Contains the creation date of the transaction"
+      - name: batched_at
+        description: "Contains the date on which batch was processed"

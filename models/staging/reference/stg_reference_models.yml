@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_nations
+    description: "Contains nation ID and region information"
+    config:
+      tags: ['staging']
+    columns:
+      - name: nation_key
+        description: "Contains the unique ID of each nation"
+        tests:
+        - not_null
+        - unique
+      - name: nation_name
+        description: "Contains name of the Nation"
+        tests:
+        - not_null
+      - name: region_name
+        description: "Contains the name of the Region in which nation lies"
+        tests:
+        - not_null
+      - name: updated_at
+        description: "Contains the update date of the records"
+        tests:
+        - not_null

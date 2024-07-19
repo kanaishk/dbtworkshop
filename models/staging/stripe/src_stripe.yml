@@ -6,3 +6,20 @@ sources:
     schema: stripe
     tables:
       - name: payment
+        description: "Contains order payment information like payment method etc"
+        columns:
+          - name: id
+            description: "Contains the unique payment id for an order"
+          - name: orderid
+            description: "Contains the order ID associated with the payment"
+          - name: paymentmethod
+            description: "Contains the payment method used for the transaction"
+          - name: status
+            description: "Contains the transaction status of the payment"
+          - name: amount
+            description: "Contains the transaction amount"
+          - name: created
+            description: "Contains the creation date of the transaction"
+          - name: batchedat
+            description: "Contains the date on which batch was processed"
+

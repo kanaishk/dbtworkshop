@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Contains the customer information like ID and name"
+    config:
+      tags: ['staging']
+    columns:
+      - name: customer_id
+        description: "Contains the unique ID of each customer"
+        tests:
+        - not_null
+        - unique
+      - name: first_name
+        description: "Contains first name of the Customer"
+        tests:
+        - not_null
+      - name: last_name
+        description: "Contains the last name of the Customer"
+        tests:
+        - not_null
+        
+  - name: stg_orders
+    description: "Contains the order details like Status and date"
+    config:
+      tags: ['staging']
+    columns:
+      - name: order_id
+        description: "Contains the unique ID of each order"
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "Contains the ID of Customer who placed the order"
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
+      - name: order_date
+        description: "Contains the date on which order is placed."
+      - name: status
+        description: "Contains the status of the order"
+        tests:
+          - accepted_values:
+              values: ['completed', 'returned', 'return_pending', 'shipped', 'placed']
