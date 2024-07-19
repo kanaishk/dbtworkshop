@@ -36,11 +36,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  dbt_trng:
-    # Applies to all files under models/example/
-    staging:
+  staging:
+    +materialized: ephemeral
+    reference:
       +materialized: table
-    test_models:
+  facts:
       +materialized: table
-    example:
-      +materialized: view
+  example:
+    +materialized: view
