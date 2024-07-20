@@ -13,4 +13,6 @@ models:
       - name: status_code
         tests:
           - accepted_values:
-              values: ['pass', 'fail']
+              values: ['P', 'O', 'F']
+      - name: gross_item_sales_amount
+        description: '{{doc("gross_item_sales_amount") }}'

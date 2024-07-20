@@ -1,4 +1,9 @@
-with line_item as (
+{{
+    config(
+        pre_hook=before_begin("{{create_source_lineitem()}}")
+    )
+}}
+with line_items as (
     select
         l_orderkey as order_key,
         l_partkey as part_key,

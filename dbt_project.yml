@@ -38,4 +38,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_workshop_project:
     +schema: project
+    staging:
+      +materialized: table
     

@@ -1,3 +1,8 @@
+{{
+    config(
+        pre_hook=before_begin("{{create_source_orders()}}")
+    )
+}}
 with orders as (
     select
         o_orderkey as order_key,

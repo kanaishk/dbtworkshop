@@ -5,7 +5,7 @@ with orders as (
 line_item as (
     select *
     from {{ ref('stg_tpch_line_items') }}
-)
+),
 order_item as (
     select
         orders.order_key,

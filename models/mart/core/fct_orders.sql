@@ -1,11 +1,11 @@
 with orders as (
     select *
     from {{ ref('stg_tpch_orders') }}
-)
-with order_item as (
+),
+order_item as (
     select * 
     from {{ ref('int_order_items') }}
-)
+),
 order_item_summary as (
     select 
         order_key,
@@ -36,4 +36,6 @@ final as (
         orders
     inner join order_item_summary
     on orders.order_key = order_item_summary.order_key
-);
+)
+select * 
+from final
