@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: fct_order
+  - name: fct_orders
     columns:
       - name: order_key
         tests:
@@ -15,4 +15,4 @@ models:
           - accepted_values:
               values: ['P', 'O', 'F']
       - name: gross_item_sales_amount
-        description: '{{doc("gross_item_sales_amount") }}'
+        description: '{{doc("gross_item_sales_amount")}}'
