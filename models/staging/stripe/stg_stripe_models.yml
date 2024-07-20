@@ -29,6 +29,8 @@ models:
               values: ['success', 'fail']
       - name: amount
         description: "Contains the transaction amount"
+        tests:
+          - check_amount_value
       - name: created_at
         description: "Contains the creation date of the transaction"
       - name: batched_at
