@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_tpch_line_items
+    columns:
+      - name: order_item_key
+        tests:
+          - unique
+          - not_null

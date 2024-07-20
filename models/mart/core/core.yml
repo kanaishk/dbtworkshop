@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: fct_order
+    columns:
+      - name: order_key
+        tests:
+          - not_null
+          - unique
+          - relationships:
+              field: order_key
+              to: ref('stg_tpch_orders')
+      - name: status_code
+        tests:
+          - accepted_values:
+              values: ['pass', 'fail']
